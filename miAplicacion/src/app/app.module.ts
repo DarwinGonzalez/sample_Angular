@@ -37,6 +37,7 @@ import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     MatSelectModule,
     MatSlideToggleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule
   ],
   providers: [ProductoService,EmpleadoService],
   entryComponents: [ LoginComponent ],
