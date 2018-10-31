@@ -20,7 +20,8 @@ export const PRODUCTOS: Producto[] = [
       autor: "Emilio Fernández",
       fecha: "2016-12-03T07:52:24.236094Z"
     }
-  ]
+  ],
+  oferta: true
 },
 {
   id: 2,
@@ -40,7 +41,8 @@ export const PRODUCTOS: Producto[] = [
       autor: "Lucas Fernández",
       fecha: "2016-12-03T07:52:24.236094Z"
     }
-  ]
+  ],
+  oferta: true
 },
 {
   id: 3,
@@ -60,7 +62,8 @@ export const PRODUCTOS: Producto[] = [
       autor: "Silvia Fernández",
       fecha: "2016-12-03T07:52:24.236094Z"
     }
-  ]
+  ],
+  oferta: false
 },
 {
   id: 4,
@@ -80,6 +83,7 @@ export const PRODUCTOS: Producto[] = [
       autor: "Joan Puigdemont",
       fecha: "2016-12-03T07:52:24.236094Z"
     }
-  ]
+  ],
+  oferta: false
 }
 ];

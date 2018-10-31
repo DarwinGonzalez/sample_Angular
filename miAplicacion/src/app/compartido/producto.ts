@@ -6,4 +6,5 @@ export class Producto {
     precio: number; 
     imagen: string;
     comentarios: Comentario[];
+    oferta: boolean;
 }

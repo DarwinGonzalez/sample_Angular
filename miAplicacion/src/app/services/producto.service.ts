@@ -11,5 +11,9 @@ export class ProductoService {
   constructor() { }
 
   getProductos(): Producto[] { return PRODUCTOS; }
+
+  getProducto(id: number): Producto { return PRODUCTOS.filter((producto) => (producto.id === id))[0]; }
+  
+  getProductosOferta(): Producto[] { return PRODUCTOS.filter((producto) => producto.oferta); }    
   
 }

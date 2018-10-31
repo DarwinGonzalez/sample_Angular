@@ -23,6 +23,12 @@
 
         <div fxFlex>
           <h2>Personal</h2>
-          <p>Mostrar el personal aquí</p>
+            <mat-list> 
+                <mat-list-item *ngFor="let elemento of vEmpleados" >
+                    <img matListAvatar src={{elemento.imagen}} alt={{elemento.nombre}}>
+                    <p mat-line> {{elemento.nombre}} </p>
+                    <p mat-line> {{elemento.puesto}} </p> 
+                  </mat-list-item>
+            </mat-list>
        </div>
 </div>

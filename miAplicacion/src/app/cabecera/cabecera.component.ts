@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { LoginComponent } from '../login/login.component';
+
 @Component({
   selector: 'app-cabecera',
   templateUrl: './cabecera.component.html',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogo: MatDialog) { }
 
   ngOnInit() {
   }
-
+   
+  abrirFormularioLogin() {
+    this.dialogo.open(LoginComponent, {width: '500px', height: '450px'});
+  }
 }

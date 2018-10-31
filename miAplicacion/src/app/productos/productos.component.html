@@ -1,7 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutGap="10px">
   <div fxFlex>
       <mat-grid-list cols="4" rowHeight="300px"> 
-        <mat-grid-tile *ngFor="let elemento of vProductos" (click)="onSeleccionado(elemento)">
+        <mat-grid-tile *ngFor="let elemento of vProductos" [routerLink]= "['/detalleProducto', elemento.id]" >
           <img height="130px" width="120px" src={{elemento.imagen}} alt={{elemento.nombre}}>
           <mat-grid-tile-footer>
             <h1 mat-line> {{elemento.nombre | uppercase}} </h1> <p mat-line>
@@ -12,7 +12,7 @@
     </div>
 
     <div fxFlex *ngIf="productoSeleccionado">
-        <app-detalle-producto [producto]="productoSeleccionado"></app-detalle-producto>
+        <app-detalle-producto></app-detalle-producto>
     </div>
      
 </div>
