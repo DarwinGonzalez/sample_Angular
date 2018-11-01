@@ -34,7 +34,7 @@ export class DetalleProductoComponent implements OnInit {
 
   crearFormulario() {
     this.comentarioForm = this.fb.group({
-      estrellas: 0,
+      estrellas: 5,
       comentario: '', 
       autor: '',
       fecha: ''
