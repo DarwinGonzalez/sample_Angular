@@ -22,16 +22,19 @@ export class ContactoComponent implements OnInit {
   crearFormulario() {
     this.consultaForm = this.fb.group({
       nombre: '',
-      apellidos: '', telefono: 0,
+      apellidos: '',
+      telefono: 0,
       email: '',
-      contactar: false, tipocontacto: 'None', mensaje: ''
+      contactar: false,
+      tipocontacto: 'None',
+      mensaje: ''
     });
   }
 
   onSubmit() {
-    this.consulta = this.consultaForm.value; 
+    this.consulta = this.consultaForm.value;
     console.log(this.consulta);
-    this.consultaForm.reset(); 
+    this.consultaForm.reset();
   1}
-    
+
 }
