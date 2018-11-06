@@ -10,7 +10,6 @@ import { ProductoService } from '../services/producto.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { switchMap } from 'rxjs/operators';
-import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-detalle-producto',
@@ -99,5 +98,6 @@ export class DetalleProductoComponent implements OnInit {
         }
       }
     }
+  }
 
 }
