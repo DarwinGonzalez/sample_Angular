@@ -39,6 +39,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DatePipe } from '@angular/common'
 
 
 @NgModule({
@@ -75,7 +76,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSliderModule,
     MatProgressSpinnerModule
   ],
-  providers: [ProductoService,EmpleadoService],
+  providers: [ProductoService,EmpleadoService, DatePipe],
   entryComponents: [ LoginComponent ],
   bootstrap: [AppComponent]
 })
