@@ -3,7 +3,7 @@
   <div fxFlex>
     <h1> Aquí encontrarás las ofertas de nuestra tienda.</h1>
   </div>
-  <div fxFlex>
+  <div fxFlex *ngIf="productosOferta">
 
     <mat-grid-list cols="4" rowHeight="300px">
       <mat-grid-tile *ngFor="let elemento of productosOferta" [routerLink]= "['/detalleProducto', elemento.id]">

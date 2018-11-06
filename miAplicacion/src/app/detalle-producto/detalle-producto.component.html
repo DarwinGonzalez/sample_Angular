@@ -1,7 +1,7 @@
-<<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center"
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center"
   fxLayoutGap="10px" fxLayoutGap.xs="0">
 
-  <div fxFlex="40">
+  <div fxFlex="40" *ngIf="producto">
     <p>Detalles del producto</p>
 
     <mat-card>
@@ -22,16 +22,23 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
+
+        <button mat-button [routerLink]="['/detalleProducto',prev]">
+          <span class="fa fa-chevron-left fa-lg"></span>
+        </button>
         <button mat-button (click)=volver()>Volver</button>
         <button mat-button>Comprar</button>
 
+        <button mat-button [routerLink]="['/detalleProducto',post]">
+          <span class="fa fa-chevron-right fa-lg"></span>
+        </button>
 
       </mat-card-actions>
     </mat-card>
 
   </div>
 
-  <div fxFlex="40">
+  <div fxFlex="40" *ngIf="producto">
     <p>Comentarios acerca del producto</p>
     <mat-card>
       <mat-card-header>
@@ -60,7 +67,7 @@
     <mat-card>
       <mat-card-content>
         <form novalidate [formGroup]="comentarioForm" (ngSubmit)="onSubmit()">
-          
+
           <p>
 
             <mat-form-field class="half-width">
@@ -93,4 +100,4 @@
     </mat-card>
   </div>
 
-  </div>
+</div>

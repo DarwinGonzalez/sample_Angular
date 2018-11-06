@@ -9,6 +9,8 @@ import { ProductoService } from '../services/producto.service';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { switchMap } from 'rxjs/operators';
+
 @Component({
   selector: 'app-detalle-producto',
   templateUrl: './detalle-producto.component.html',
@@ -18,16 +20,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DetalleProductoComponent implements OnInit {
 
   producto: Producto;
-  
+
   comentarioForm: FormGroup;
   comentario: Comentario;
+
+  productoIds: number[];
+  prev: number;
+  post: number;
 
   constructor(private productoService: ProductoService, private route: ActivatedRoute,
     private location: Location, private fb: FormBuilder) { this.crearFormulario(); }
 
   ngOnInit() {
-    let id = +this.route.snapshot.params['id'];
-    this.producto = this.productoService.getProducto(id);
+    this.productoService.getProductosIds().subscribe(productoIds => this.productoIds = productoIds);
+
+    this.route.params.pipe(switchMap((params: Params) => this.productoService.getProducto(+params['id']))).subscribe(producto => { this.producto = producto; this.setPrevPost(producto.id); });
   }
 
   volver(): void { this.location.back(); }
@@ -35,16 +42,22 @@ export class DetalleProductoComponent implements OnInit {
   crearFormulario() {
     this.comentarioForm = this.fb.group({
       estrellas: 5,
-      comentario: '', 
+      comentario: '',
       autor: '',
       fecha: ''
     });
   }
 
   onSubmit() {
-    this.comentario = this.comentarioForm.value; 
+    this.comentario = this.comentarioForm.value;
     console.log(this.comentario);
-    this.comentarioForm.reset(); 
+    this.comentarioForm.reset();
+  }
+
+  setPrevPost(productoId: number) {
+    const index = this.productoIds.indexOf(productoId);
+    this.prev = this.productoIds[(this.productoIds.length + index - 1)%this.productoIds.length];
+    this.post = this.productoIds[(this.productoIds.length + index + 1)%this.productoIds.length];
   }
 
 }

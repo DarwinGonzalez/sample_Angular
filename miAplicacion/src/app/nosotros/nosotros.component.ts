@@ -15,7 +15,7 @@ export class NosotrosComponent implements OnInit {
   constructor(private empleadoService: EmpleadoService) { }
 
   ngOnInit() {
-    this.vEmpleados = this.empleadoService.getEmpleados();
+    this.empleadoService.getEmpleados().subscribe(empleados => this.vEmpleados = empleados);
   }
 
 }

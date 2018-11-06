@@ -48,6 +48,8 @@
         <mat-form-field class="half-width">
 
           <input matInput formControlName="nombre" placeholder="Nombre" type="text" required>
+          <span [hidden]="!(erroresForm.nombre)">
+              {{ erroresForm.nombre }}</span>
 
         </mat-form-field>
 
@@ -55,6 +57,8 @@
         <mat-form-field class="half-width">
 
           <input matInput formControlName="apellidos" placeholder="Apellidos" type="text" required>
+          <span [hidden]="!(erroresForm.apellidos)">
+              {{erroresForm.apellidos}}</span>
 
         </mat-form-field>
       </p>
@@ -64,15 +68,18 @@
 
         <mat-form-field class="half-width">
 
-          <input matInput formControlName="telefono" placeholder="TelÈfono" type="tel" required>
+          <input matInput formControlName="telefono" placeholder="Teléfono" type="tel"  pattern="[0-9]*" required>
+          <span [hidden]="!(erroresForm.telefono)">
+              {{erroresForm.telefono}}</span>
 
         </mat-form-field>
 
 
         <mat-form-field class="half-width">
 
-          <input matInput formControlName="email" placeholder="Email" type="email" required>
-
+          <input matInput formControlName="email" placeholder="Email" type="email" email required>
+          <span [hidden]="!(erroresForm.email)">
+              {{erroresForm.email}}</span>
         </mat-form-field>
       </p>
 

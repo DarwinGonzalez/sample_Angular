@@ -18,8 +18,8 @@ export class ProductosComponent implements OnInit {
   constructor(private productoService: ProductoService ) { }
 
   ngOnInit() {
-    this.vProductos = this.productoService.getProductos();
+    this.productoService.getProductos().subscribe(productos => this.vProductos = productos);
   }
-   
+
     onSeleccionado(producto: Producto) { this.productoSeleccionado = producto; }
 }

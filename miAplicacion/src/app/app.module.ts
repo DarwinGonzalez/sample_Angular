@@ -8,8 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { MatListModule } from '@angular/material/list';
 
-import { MatGridListModule } from '@angular/material/grid-list'; 
-import { MatCardModule } from '@angular/material/card'; 
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -30,14 +30,15 @@ import { InicioComponent } from './inicio/inicio.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { LoginComponent } from './login/login.component';
 
-import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -55,8 +56,8 @@ import {MatSliderModule} from '@angular/material/slider';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, 
-    MatToolbarModule, 
+    BrowserAnimationsModule,
+    MatToolbarModule,
     FlexLayoutModule,
     MatListModule,
     MatGridListModule,
@@ -71,7 +72,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatSelectModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatProgressSpinnerModule
   ],
   providers: [ProductoService,EmpleadoService],
   entryComponents: [ LoginComponent ],
