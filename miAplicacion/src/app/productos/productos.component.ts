@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject  } from '@angular/core';
 
 import { ProductoService } from '../services/producto.service';
 
@@ -14,11 +14,12 @@ import { Producto } from '../compartido/producto';
 export class ProductosComponent implements OnInit {
   vProductos: Producto[];
   productoSeleccionado;
+  errorMensaje: string;
 
-  constructor(private productoService: ProductoService ) { }
+  constructor(private productoService: ProductoService, @Inject('BaseURL') private BaseURL ) { }
 
   ngOnInit() {
-    this.productoService.getProductos().subscribe(productos => this.vProductos = productos);
+    this.productoService.getProductos().subscribe(productos => this.vProductos = productos, errorMensaje => this.errorMensaje = <any>errorMensaje);
   }
 
     onSeleccionado(producto: Producto) { this.productoSeleccionado = producto; }

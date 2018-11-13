@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 
 import { Empleado } from '../compartido/empleado';
-import { EMPLEADOS } from '../compartido/empleados';
 
 import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+
+
+import { map,catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { baseURL } from '../compartido/baseurl';
+import { ProcesaHTTPMsjService } from './procesa-httpmsj.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpleadoService {
 
-  constructor() { }
+  constructor(private http: HttpClient, private procesaHttpmsjService: ProcesaHTTPMsjService) { }
 
   getEmpleados(): Observable<Empleado[]> {
-    return of(EMPLEADOS).pipe(delay(1000));
+    return this.http.get<Empleado[]>(baseURL + 'empleados')
+    .pipe(catchError(this.procesaHttpmsjService.gestionError));
   }
 }

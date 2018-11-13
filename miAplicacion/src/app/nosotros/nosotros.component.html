@@ -25,12 +25,15 @@
           <h2>Personal</h2>
             <mat-list>
                 <mat-list-item *ngFor="let elemento of vEmpleados" >
-                    <img matListAvatar src={{elemento.imagen}} alt={{elemento.nombre}}>
+                    <img matListAvatar src="{{BaseURL + elemento.imagen}}" alt={{elemento.nombre}}>
                     <p mat-line> {{elemento.nombre}} </p>
                     <p mat-line> {{elemento.puesto}} </p>
                   </mat-list-item>
             </mat-list>
        </div>
 
-       <div [hidden]="vEmpleados"> <mat-spinner></mat-spinner><h4>Cargando . . .</h4> </div>
+       <div [hidden]="vEmpleados || errorMensaje">
+        <mat-spinner></mat-spinner><h4>Cargando . . .</h4> </div>
+        <div *ngIf="errorMensaje"> <h2>Error</h2> <h4>{{errorMensaje}}</h4>
+      </div>
 </div>

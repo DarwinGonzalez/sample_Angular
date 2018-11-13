@@ -39,7 +39,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { baseURL } from './compartido/baseurl';
+import { ProcesaHTTPMsjService } from './services/procesa-httpmsj.service';
+
 
 
 @NgModule({
@@ -74,9 +78,10 @@ import { DatePipe } from '@angular/common'
     MatSlideToggleModule,
     ReactiveFormsModule,
     MatSliderModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
-  providers: [ProductoService,EmpleadoService, DatePipe],
+  providers: [ProductoService,EmpleadoService, DatePipe, {provide: 'BaseURL', useValue: baseURL}, ProcesaHTTPMsjService],
   entryComponents: [ LoginComponent ],
   bootstrap: [AppComponent]
 })

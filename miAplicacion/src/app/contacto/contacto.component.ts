@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Consulta, TipoContacto } from '../compartido/consulta';
 
+import { ConsultaService } from '../services/consulta.service';
+
 @Component({
   selector: 'app-contacto',
   templateUrl: './contacto.component.html',
@@ -13,6 +15,8 @@ export class ContactoComponent implements OnInit {
   consultaForm: FormGroup;
   consulta: Consulta;
   tipoContacto = TipoContacto;
+
+  consultarest: Consulta;
 
   erroresForm = {
 
@@ -62,7 +66,7 @@ export class ContactoComponent implements OnInit {
 
   };
 
-  constructor(private fb: FormBuilder) { this.crearFormulario(); }
+  constructor(private fb: FormBuilder, private consultaService: ConsultaService) { this.crearFormulario(); }
 
   ngOnInit() {
   }
@@ -84,6 +88,10 @@ export class ContactoComponent implements OnInit {
 
   onSubmit() {
     this.consulta = this.consultaForm.value;
+    this.consultarest = this.consulta;
+    this.consultaService.enviarConsulta(this.consultarest)
+      .subscribe(consulta => { this.consultarest = consulta });
+
     console.log(this.consulta);
     this.consultaForm.reset();
   }

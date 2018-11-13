@@ -1,5 +1,5 @@
 import { Comentario } from './../compartido/comentario';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Producto } from './../compartido/producto';
 
 import { Params, ActivatedRoute } from '@angular/router';
@@ -27,6 +27,7 @@ export class DetalleProductoComponent implements OnInit {
   productoIds: number[];
   prev: number;
   post: number;
+  productorest = null;
 
   erroresForm = {
     'autor': '',
@@ -48,12 +49,12 @@ export class DetalleProductoComponent implements OnInit {
   };
 
   constructor(private productoService: ProductoService, private route: ActivatedRoute,
-    private location: Location, private fb: FormBuilder,private datapipe: DatePipe) { this.crearFormulario(); }
+    private location: Location, private fb: FormBuilder, private datapipe: DatePipe, @Inject('BaseURL') private BaseURL) { this.crearFormulario(); }
 
   ngOnInit() {
     this.productoService.getProductosIds().subscribe(productoIds => this.productoIds = productoIds);
 
-    this.route.params.pipe(switchMap((params: Params) => this.productoService.getProducto(+params['id']))).subscribe(producto => { this.producto = producto; this.setPrevPost(producto.id); });
+    this.route.params.pipe(switchMap((params: Params) => this.productoService.getProducto(+params['id']))).subscribe(producto => { this.producto = producto; this.productorest = producto; this.setPrevPost(producto.id); });
   }
 
   volver(): void { this.location.back(); }
@@ -76,14 +77,16 @@ export class DetalleProductoComponent implements OnInit {
     this.comentario = this.comentarioForm.value;
     console.log(this.comentario);
     this.comentarioForm.reset();
-
-    this.producto.comentarios.push(this.comentario);
+    //this.producto.comentarios.push(this.comentario);
+    this.productorest.comentarios.push(this.comentario);
+    this.productoService.setProducto(this.productorest)
+      .subscribe(producto => { this.producto = producto });
   }
 
   setPrevPost(productoId: number) {
     const index = this.productoIds.indexOf(productoId);
-    this.prev = this.productoIds[(this.productoIds.length + index - 1)%this.productoIds.length];
-    this.post = this.productoIds[(this.productoIds.length + index + 1)%this.productoIds.length];
+    this.prev = this.productoIds[(this.productoIds.length + index - 1) % this.productoIds.length];
+    this.post = this.productoIds[(this.productoIds.length + index + 1) % this.productoIds.length];
   }
 
   onCambioValor(data?: any) {

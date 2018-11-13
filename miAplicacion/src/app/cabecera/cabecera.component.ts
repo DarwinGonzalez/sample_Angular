@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { LoginComponent } from '../login/login.component';
@@ -10,11 +10,11 @@ import { LoginComponent } from '../login/login.component';
 })
 export class CabeceraComponent implements OnInit {
 
-  constructor(public dialogo: MatDialog) { }
+  constructor(public dialogo: MatDialog,  @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
   }
-   
+
   abrirFormularioLogin() {
     this.dialogo.open(LoginComponent, {width: '500px', height: '450px'});
   }
