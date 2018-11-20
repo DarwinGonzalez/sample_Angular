@@ -43,6 +43,8 @@ import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { baseURL } from './compartido/baseurl';
 import { ProcesaHTTPMsjService } from './services/procesa-httpmsj.service';
+import { ChatService } from './services/chat.service';
+import { AtencionComponent } from './atencion/atencion.component';
 
 
 
@@ -57,7 +59,8 @@ import { ProcesaHTTPMsjService } from './services/procesa-httpmsj.service';
     ContactoComponent,
     InicioComponent,
     EmpleadosComponent,
-    LoginComponent
+    LoginComponent,
+    AtencionComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,7 @@ import { ProcesaHTTPMsjService } from './services/procesa-httpmsj.service';
     MatProgressSpinnerModule,
     HttpClientModule
   ],
-  providers: [ProductoService,EmpleadoService, DatePipe, {provide: 'BaseURL', useValue: baseURL}, ProcesaHTTPMsjService],
+  providers: [ProductoService,EmpleadoService, DatePipe, {provide: 'BaseURL', useValue: baseURL}, ProcesaHTTPMsjService, ChatService],
   entryComponents: [ LoginComponent ],
   bootstrap: [AppComponent]
 })

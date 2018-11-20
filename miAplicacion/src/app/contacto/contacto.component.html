@@ -49,7 +49,7 @@
 
           <input matInput formControlName="nombre" placeholder="Nombre" type="text" required>
           <span [hidden]="!(erroresForm.nombre)">
-              {{ erroresForm.nombre }}</span>
+            {{ erroresForm.nombre }}</span>
 
         </mat-form-field>
 
@@ -58,7 +58,7 @@
 
           <input matInput formControlName="apellidos" placeholder="Apellidos" type="text" required>
           <span [hidden]="!(erroresForm.apellidos)">
-              {{erroresForm.apellidos}}</span>
+            {{erroresForm.apellidos}}</span>
 
         </mat-form-field>
       </p>
@@ -68,9 +68,9 @@
 
         <mat-form-field class="half-width">
 
-          <input matInput formControlName="telefono" placeholder="Teléfono" type="tel"  pattern="[0-9]*" required>
+          <input matInput formControlName="telefono" placeholder="Teléfono" type="tel" pattern="[0-9]*" required>
           <span [hidden]="!(erroresForm.telefono)">
-              {{erroresForm.telefono}}</span>
+            {{erroresForm.telefono}}</span>
 
         </mat-form-field>
 
@@ -79,7 +79,7 @@
 
           <input matInput formControlName="email" placeholder="Email" type="email" email required>
           <span [hidden]="!(erroresForm.email)">
-              {{erroresForm.email}}</span>
+            {{erroresForm.email}}</span>
         </mat-form-field>
       </p>
 
@@ -126,5 +126,12 @@
 
     </form>
 
+  </div>
+
+  <div fxFlex>
+    <div>
+      <hr>
+      <app-atencion></app-atencion>
+    </div>
   </div>
 </div>
