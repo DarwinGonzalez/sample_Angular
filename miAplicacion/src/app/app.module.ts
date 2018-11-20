@@ -29,6 +29,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { LoginComponent } from './login/login.component';
+import { AtencionComponent } from './atencion/atencion.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -44,8 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { baseURL } from './compartido/baseurl';
 import { ProcesaHTTPMsjService } from './services/procesa-httpmsj.service';
 import { ChatService } from './services/chat.service';
-import { AtencionComponent } from './atencion/atencion.component';
-
+import { AutenticarService } from './services/autenticar.service';
 
 
 @NgModule({
@@ -84,7 +84,7 @@ import { AtencionComponent } from './atencion/atencion.component';
     MatProgressSpinnerModule,
     HttpClientModule
   ],
-  providers: [ProductoService,EmpleadoService, DatePipe, {provide: 'BaseURL', useValue: baseURL}, ProcesaHTTPMsjService, ChatService],
+  providers: [ProductoService,EmpleadoService, DatePipe, {provide: 'BaseURL', useValue: baseURL}, ProcesaHTTPMsjService, ChatService, AutenticarService],
   entryComponents: [ LoginComponent ],
   bootstrap: [AppComponent]
 })

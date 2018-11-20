@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { MatDialog, MatDialogRef} from '@angular/material';
+import { AutenticarService } from '../services/autenticar.service';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +8,19 @@ import { MatDialog, MatDialogRef} from '@angular/material';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  usuario = {nombre: '', password: '', nocerrar: false};
+  usuario = { nombre: '', password: '', nocerrar: false };
 
-  constructor(public dialogRef: MatDialogRef<LoginComponent>) { }
+  constructor(private autenticarService: AutenticarService, public dialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    console.log("Usuario: ", this.usuario); this.dialogRef.close();
+    if (this.autenticarService.autenticar(this.usuario)) {
+      this.dialogRef.close(this.usuario);
+    } else {
+      let usuario = { nombre: '', password: '', nocerrar: false };
+      this.dialogRef.close(usuario);
+    }
   }
 }
