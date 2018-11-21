@@ -103,4 +103,8 @@ export class DetalleProductoComponent implements OnInit {
     }
   }
 
+  onComprar(){
+    console.log("Ha hecho click en comprar, se ha añadido el producto a el carrito");
+  }
+
 }

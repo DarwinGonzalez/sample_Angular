@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { LoginComponent } from '../login/login.component';
+import { CarritoCompraComponent } from '../carrito-compra/carrito-compra.component';
 import { HostListener } from '@angular/core';
 import { AutenticarService } from '../services/autenticar.service';
 
@@ -24,6 +25,10 @@ export class CabeceraComponent implements OnInit {
   abrirFormularioLogin() {
     let dialogo = this.dialogo.open(LoginComponent, { width: '500px', height: '450px' });
     dialogo.afterClosed().subscribe(result => this.login = result);
+  }
+
+  abrirCarrito() {
+    this.dialogo.open( CarritoCompraComponent, {width: '500px', height: '450px'});
   }
 
   cerrarSesion() {

@@ -27,7 +27,7 @@
           <span class="fa fa-chevron-left fa-lg"></span>
         </button>
         <button mat-button (click)=volver()>Volver</button>
-        <button mat-button>Comprar</button>
+        <button mat-button (click)=onComprar()>Comprar</button>
 
         <button mat-button [routerLink]="['/detalleProducto',post]">
           <span class="fa fa-chevron-right fa-lg"></span>

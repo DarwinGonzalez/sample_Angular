@@ -30,6 +30,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { LoginComponent } from './login/login.component';
 import { AtencionComponent } from './atencion/atencion.component';
+import { CarritoCompraComponent } from './carrito-compra/carrito-compra.component'
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -60,7 +61,8 @@ import { AutenticarService } from './services/autenticar.service';
     InicioComponent,
     EmpleadosComponent,
     LoginComponent,
-    AtencionComponent
+    AtencionComponent,
+    CarritoCompraComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,7 @@ import { AutenticarService } from './services/autenticar.service';
     HttpClientModule
   ],
   providers: [ProductoService,EmpleadoService, DatePipe, {provide: 'BaseURL', useValue: baseURL}, ProcesaHTTPMsjService, ChatService, AutenticarService],
-  entryComponents: [ LoginComponent ],
+  entryComponents: [ LoginComponent, CarritoCompraComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
