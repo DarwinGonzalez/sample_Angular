@@ -4,10 +4,15 @@ import { ProductoService } from '../services/producto.service';
 
 import { Producto } from '../compartido/producto';
 
+import { descarga } from '../animaciones/app.animaciones';
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
-  styleUrls: ['./productos.component.scss']
+  styleUrls: ['./productos.component.scss'],
+  animations: [
+    descarga()
+  ]
 })
 
 

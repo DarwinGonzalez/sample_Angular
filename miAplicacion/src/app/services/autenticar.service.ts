@@ -46,7 +46,8 @@ export class AutenticarService {
   }
 
   abrirBD() { //Se abre la BD
-    var request = window.indexedDB.open("miBD", 1); var db = this;
+    var request = window.indexedDB.open("miBD", 1);
+    var db = this;
     var db2 = null;
     //En caso de error
     request.onerror = function (event) {

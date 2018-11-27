@@ -1,3 +1,4 @@
+import { ProductoCarrito } from './../compartido/productoCarrito';
 import { Comentario } from './../compartido/comentario';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Producto } from './../compartido/producto';
@@ -10,17 +11,23 @@ import { ProductoService } from '../services/producto.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { switchMap } from 'rxjs/operators';
+import { CarritoService } from './../services/carrito.service';
+import { visibilidad } from '../animaciones/app.animaciones';
+
 
 @Component({
   selector: 'app-detalle-producto',
   templateUrl: './detalle-producto.component.html',
-  styleUrls: ['./detalle-producto.component.scss']
+  styleUrls: ['./detalle-producto.component.scss'],
+  animations: [
+    visibilidad()
+  ]
 })
 
 export class DetalleProductoComponent implements OnInit {
 
   producto: Producto;
-
+  cantidad = 0;
   comentarioForm: FormGroup;
   comentario: Comentario;
 
@@ -28,6 +35,8 @@ export class DetalleProductoComponent implements OnInit {
   prev: number;
   post: number;
   productorest = null;
+
+  visibilidad = 'visible';
 
   erroresForm = {
     'autor': '',
@@ -49,12 +58,16 @@ export class DetalleProductoComponent implements OnInit {
   };
 
   constructor(private productoService: ProductoService, private route: ActivatedRoute,
-    private location: Location, private fb: FormBuilder, private datapipe: DatePipe, @Inject('BaseURL') private BaseURL) { this.crearFormulario(); }
+    private location: Location, private fb: FormBuilder, private datapipe: DatePipe, @Inject('BaseURL') private BaseURL, private carritoService: CarritoService) { this.crearFormulario(); }
 
   ngOnInit() {
     this.productoService.getProductosIds().subscribe(productoIds => this.productoIds = productoIds);
 
-    this.route.params.pipe(switchMap((params: Params) => this.productoService.getProducto(+params['id']))).subscribe(producto => { this.producto = producto; this.productorest = producto; this.setPrevPost(producto.id); });
+    this.route.params.pipe(switchMap((params: Params) => {
+      this.visibilidad = 'oculto';
+      return this.productoService.getProducto(+params['id'])}
+    ))
+    .subscribe(producto => { this.producto = producto; this.productorest = producto; this.setPrevPost(producto.id); this.visibilidad = 'visible'});
   }
 
   volver(): void { this.location.back(); }
@@ -105,6 +118,9 @@ export class DetalleProductoComponent implements OnInit {
 
   onComprar(){
     console.log("Ha hecho click en comprar, se ha añadido el producto a el carrito");
+    let aux = "Producto " +  this.producto.id;
+    var productoAux = new ProductoCarrito(aux, 1);
+    this.carritoService.setProductoCarrito(productoAux);
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutGap="10px">
-  <div fxFlex *ngIf="vProductos">
+  <div fxFlex *ngIf="vProductos" [@descarga]>
       <mat-grid-list cols="4" rowHeight="300px">
-        <mat-grid-tile *ngFor="let elemento of vProductos" [routerLink]= "['/detalleProducto', elemento.id]" >
+        <mat-grid-tile *ngFor="let elemento of vProductos" [routerLink]= "['/detalleProducto', elemento.id]" appResaltar >
           <img height="130px" width="120px" src="{{BaseURL + elemento.imagen}}" alt={{elemento.nombre}}>
           <mat-grid-tile-footer>
             <h1 mat-line> {{elemento.nombre | uppercase}} </h1> <p mat-line>

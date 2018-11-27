@@ -47,6 +47,8 @@ import { baseURL } from './compartido/baseurl';
 import { ProcesaHTTPMsjService } from './services/procesa-httpmsj.service';
 import { ChatService } from './services/chat.service';
 import { AutenticarService } from './services/autenticar.service';
+import { ResaltarDirective } from './directives/resaltar.directive';
+
 
 
 @NgModule({
@@ -62,7 +64,8 @@ import { AutenticarService } from './services/autenticar.service';
     EmpleadosComponent,
     LoginComponent,
     AtencionComponent,
-    CarritoCompraComponent
+    CarritoCompraComponent,
+    ResaltarDirective
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { CarritoService } from './../services/carrito.service';
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { MatDialog, MatDialogRef } from '@angular/material';
@@ -5,6 +6,8 @@ import { LoginComponent } from '../login/login.component';
 import { CarritoCompraComponent } from '../carrito-compra/carrito-compra.component';
 import { HostListener } from '@angular/core';
 import { AutenticarService } from '../services/autenticar.service';
+import { ProductoService } from '../services/producto.service';
+
 
 @Component({
   selector: 'app-cabecera',
@@ -15,7 +18,7 @@ export class CabeceraComponent implements OnInit {
 
   login = { nombre: '', password: '', nocerrar: false };
 
-  constructor(public dialogo: MatDialog, @Inject('BaseURL') private BaseURL, private autenticarService: AutenticarService, ) {
+  constructor(public dialogo: MatDialog, @Inject('BaseURL') private BaseURL, private autenticarService: AutenticarService, private carritoService: CarritoService, private productoService: ProductoService) {
     this.autenticarService.getLogin().subscribe(login => this.login = login);
   }
 

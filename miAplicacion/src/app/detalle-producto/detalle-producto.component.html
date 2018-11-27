@@ -1,7 +1,7 @@
 <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center"
   fxLayoutGap="10px" fxLayoutGap.xs="0">
 
-  <div fxFlex="40" *ngIf="producto">
+  <div fxFlex="40" *ngIf="producto" [@visibilidad]="visibilidad">
     <p>Detalles del producto</p>
 
     <mat-card>
@@ -38,7 +38,7 @@
 
   </div>
 
-  <div fxFlex="40" *ngIf="producto">
+  <div fxFlex="40" *ngIf="producto" [@visibilidad]="visibilidad">
     <p>Comentarios acerca del producto</p>
     <mat-card>
       <mat-card-header>
